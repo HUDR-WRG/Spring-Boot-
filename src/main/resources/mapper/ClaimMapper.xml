@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ClaimMapper">
+    
+    <insert id="insert" parameterType="com.example.entity.Claim" useGeneratedKeys="true" keyProperty="claimId">
+        INSERT INTO claims (item_id, claimer_id, message, status)
+        VALUES (#{itemId}, #{claimerId}, #{message}, #{status})
+    </insert>
+    
+    <select id="selectList" resultType="com.example.entity.Claim">
+        SELECT * FROM claims 
+        WHERE 1=1
+        <if test="itemId != null">
+            AND item_id = #{itemId}
+        </if>
+        <if test="claimerId != null">
+            AND claimer_id = #{claimerId}
+        </if>
+        ORDER BY claim_time DESC
+    </select>
+    
+    <select id="selectById" resultType="com.example.entity.Claim">
+        SELECT * FROM claims WHERE claim_id = #{claimId}
+    </select>
+    
+    <update id="updateStatus" parameterType="com.example.entity.Claim">
+        UPDATE claims SET status = #{status}
+        WHERE claim_id = #{claimId}
+    </update>
+    
+</mapper> 

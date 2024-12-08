@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>失物招领系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>失物招领系统</h1>
+            <div id="userInfo" style="display: none;">
+                <span id="username"></span>
+                <button onclick="logout()">退出登录</button>
+            </div>
+        </div>
+        
+        <div id="loginForm" class="form-container">
+            <h2>登录</h2>
+            <input type="text" id="loginUsername" placeholder="用户名">
+            <input type="password" id="loginPassword" placeholder="密码">
+            <button onclick="login()">登录</button>
+            <p>没有账号？<a href="#" onclick="showRegister()">立即注册</a></p>
+        </div>
+
+        <div id="registerForm" class="form-container" style="display: none;">
+            <h2>注册</h2>
+            <input type="text" id="regUsername" placeholder="用户名">
+            <input type="password" id="regPassword" placeholder="密码">
+            <input type="email" id="regEmail" placeholder="邮箱">
+            <input type="text" id="regPhone" placeholder="手机号">
+            <button onclick="register()">注册</button>
+            <p>已有账号？<a href="#" onclick="showLogin()">立即登录</a></p>
+        </div>
+
+        <div id="mainContent" style="display: none;">
+            <div class="tabs">
+                <button onclick="showLostItems()">寻物启事</button>
+                <button onclick="showFoundItems()">招领启事</button>
+                <button onclick="showMyItems()">我的发布</button>
+                <button onclick="showMyClaims()">我的认领</button>
+            </div>
+
+            <div class="publish-form">
+                <h3>发布信息</h3>
+                <input type="text" id="itemName" placeholder="物品名称">
+                <textarea id="description" placeholder="描述"></textarea>
+                <input type="text" id="location" placeholder="地点">
+                <select id="category">
+                    <option value="">选择分类</option>
+                    <option value="证件">证件</option>
+                    <option value="电子产品">电子产品</option>
+                    <option value="生活用品">生活用品</option>
+                    <option value="其他">其他</option>
+                </select>
+                <select id="lostFound">
+                    <option value="lost">寻物启事</option>
+                    <option value="found">招领启事</option>
+                </select>
+                <button onclick="publishItem()">发布</button>
+            </div>
+
+            <div id="itemList" class="item-list"></div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html> 

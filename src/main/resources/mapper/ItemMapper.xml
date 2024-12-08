@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ItemMapper">
+    
+    <insert id="insert" parameterType="com.example.entity.Item" useGeneratedKeys="true" keyProperty="itemId">
+        INSERT INTO items (user_id, item_name, description, category, lost_found, location, image_url, status)
+        VALUES (#{userId}, #{itemName}, #{description}, #{category}, #{lostFound}, #{location}, #{imageUrl}, #{status})
+    </insert>
+    
+    <select id="selectList" resultType="com.example.entity.Item">
+        SELECT * FROM items 
+        WHERE 1=1
+        <if test="category != null and category != ''">
+            AND category = #{category}
+        </if>
+        <if test="lostFound != null and lostFound != ''">
+            AND lost_found = #{lostFound}
+        </if>
+        ORDER BY create_time DESC
+    </select>
+    
+    <select id="selectById" resultType="com.example.entity.Item">
+        SELECT * FROM items WHERE item_id = #{itemId}
+    </select>
+    
+    <update id="update" parameterType="com.example.entity.Item">
+        UPDATE items 
+        <set>
+            <if test="itemName != null">item_name = #{itemName},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="category != null">category = #{category},</if>
+            <if test="location != null">location = #{location},</if>
+            <if test="imageUrl != null">image_url = #{imageUrl},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE item_id = #{itemId}
+    </update>
+    
+    <delete id="deleteById">
+        DELETE FROM items WHERE item_id = #{itemId}
+    </delete>
+    
+</mapper> 
