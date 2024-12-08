@@ -26,7 +26,7 @@
 ### 环境要求
 - JDK 1.8+
 - Maven 3.6+
-- MySQL 8.0+
+- MySQL 5.7+
 
 ### 数据库配置
 创建数据库，数据库用户名root，数据库密码123456，导入lost_and_found.sql
