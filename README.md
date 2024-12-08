@@ -20,6 +20,7 @@
   - 查看认领状态
   - 处理认领申请
 
+![avatar](https://github.com/HUDR-WRG/Spring-Boot-/blob/main/%E9%80%BB%E8%BE%91%E6%A8%A1%E5%9E%8B.png)
 ## 快速开始
 
 ### 环境要求
